@@ -159,7 +159,7 @@ function draw()
     noFill(); strokeWeight(12); stroke(250, 185, 95);
     ellipse(CircleCenterX, CircleCenterY, FixVal*0.76, FixVal*0.76);
   }
-  textAlign(CENTER, CENTER); textStyle(BOLD); textSize(FixVal*0.04); fill(255); noStroke(); text("30", width/2, height-50);
+  textAlign(CENTER, CENTER); textStyle(BOLD); textSize(FixVal*0.04); fill(255); noStroke(); text("30W", width/2, height-50);
 }
   
 
@@ -178,13 +178,14 @@ function getCanvasY()
 function windowResized() 
 {
   resizeCanvas(windowWidth, windowHeight);
-
   background(245, 86, 80);
+  scratchBg = createGraphics(width, height);
   if(windowHeight/windowWidth > 4/3)
   {
     FixVal = width*4/3;
     MyCanvas2 = createGraphics(width, width*4/3);
     MyCanvas2.image(ScratchOffLayer, 0, 0, width, width*4/3);
+    scratchBg.image(ScratchCard, 0, height/2-(width*4/3/2), width, width*4/3);
     CircleCenterX = width/2;
     CircleCenterY = height/2+width*0.125;
   }
@@ -193,12 +194,14 @@ function windowResized()
     FixVal = height*3/4;
     MyCanvas2 = createGraphics(height*3/4, height);
     MyCanvas2.image(ScratchOffLayer, 0, 0, height*3/4, height);
+    scratchBg.image(ScratchCard, width/2-(height*3/4/2), 0, height*3/4, height);
     CircleCenterX = width/2;
     CircleCenterY = height*0.3888+FixVal*0.5388/2;
   }
 
   for(let i=0; i<5; i++)
   {
+    
     let angleStep = TWO_PI / 5;
     let angle = random(angleStep*i+radians(21), angleStep*i+radians(72)-radians(21));
     if(windowHeight/windowWidth > 4/3)
@@ -211,6 +214,20 @@ function windowResized()
       AwardsX[i] = CircleCenterX + FixVal*0.25 * cos(angle);
       AwardsY[i] = CircleCenterY + FixVal*0.25 * sin(angle);
     }
+
+    if(Icon[i] == "苦瓜")
+    {
+      scratchBg.image(Kugua_BW, AwardsX[i]-FixVal*0.05, AwardsY[i]-FixVal*0.05, FixVal*0.1, FixVal*0.1);
+    }
+    else if(Icon[i] == "鵝叔")
+    {
+      scratchBg.image(UnclePenguin, AwardsX[i]-FixVal*0.05, AwardsY[i]-FixVal*0.05, FixVal*0.1, FixVal*0.1);
+    }
+    else
+    {
+      scratchBg.image(Kugua_Gold, AwardsX[i]-FixVal*0.05, AwardsY[i]-FixVal*0.05, FixVal*0.1, FixVal*0.1);
+    }
+    scratchBg.textAlign(CENTER, CENTER); scratchBg.textStyle(BOLD); scratchBg.textSize(FixVal*0.04); scratchBg.fill(0); scratchBg.noStroke(); scratchBg.text(Money[i], AwardsX[i], AwardsY[i]+FixVal*0.07);
   }
 }
 
