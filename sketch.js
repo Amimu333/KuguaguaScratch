@@ -73,8 +73,6 @@ function setup()
       Icon[i] = "金苦瓜";
     }
   }
-  Money[1] = "噗幣";
-  Icon[1] = "金苦瓜";
 }
 
 function draw() 
