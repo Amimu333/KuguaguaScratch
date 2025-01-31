@@ -64,6 +64,7 @@ function setup()
     
     let RanMon = round(random(0, 10000));
     if(RanMon<=2000) { Icon[i] = "苦瓜"; } else { Icon[i] = "鵝叔"; }
+    RanMon = round(random(0, 10000));
     if(RanMon<=6000) 
     { 
       let RanMon2 = round(random(1, 9));
