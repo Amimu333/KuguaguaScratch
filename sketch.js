@@ -9,11 +9,12 @@ let CircleCenterX, CircleCenterY = 0;
 
 function preload()
 {
-  ScratchCard     = loadImage("ScratchCard.jpg");
-  ScratchOffLayer = loadImage("ScratchOffLayer.png");
-  Kugua_BW        = loadImage("Kugua_BW.png");
-  Kugua_Gold      = loadImage("Kugua_Gold.png");
-  UnclePenguin    = loadImage("UnclePenguin.png");
+  let timestamp = new Date().getTime();
+  ScratchCard     = loadImage("ScratchCard.jpg?t=" + timestamp);
+  ScratchOffLayer = loadImage("ScratchOffLayer.png?t=" + timestamp);
+  Kugua_BW        = loadImage("Kugua_BW.png?t=" + timestamp);
+  Kugua_Gold      = loadImage("Kugua_Gold.png?t=" + timestamp);
+  UnclePenguin    = loadImage("UnclePenguin.png?t=" + timestamp);
 }
 
 function setup() 
@@ -134,7 +135,7 @@ function draw()
     noFill(); strokeWeight(12); stroke(250, 185, 95);
     ellipse(CircleCenterX, CircleCenterY, FixVal*0.76, FixVal*0.76);
   }
-  textAlign(CENTER, CENTER); textStyle(BOLD); textSize(FixVal*0.04); fill(255); noStroke(); text("10", width/2, height-50);
+  textAlign(CENTER, CENTER); textStyle(BOLD); textSize(FixVal*0.04); fill(255); noStroke(); text("10T", width/2, height-50);
 }
   
 
