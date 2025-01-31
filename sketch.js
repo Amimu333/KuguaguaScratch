@@ -134,6 +134,7 @@ function draw()
     noFill(); strokeWeight(12); stroke(250, 185, 95);
     ellipse(CircleCenterX, CircleCenterY, FixVal*0.76, FixVal*0.76);
   }
+  textAlign(CENTER, CENTER); textStyle(BOLD); textSize(FixVal*0.04); fill(255); noStroke(); text("20", width/2, height-50);
 }
   
 
