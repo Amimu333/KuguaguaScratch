@@ -120,32 +120,6 @@ function draw()
   if (isErasing) { MyCanvas2.noErase(); }
 
   image(scratchBg, 0, 0);
-  /*
-  if(windowHeight/windowWidth > 4/3)
-  {
-    image(ScratchCard, 0, height/2-(width*4/3/2), width, width*4/3);
-  }
-  else
-  {
-    image(ScratchCard, width/2-(height*3/4/2), 0, height*3/4, height);
-  }*/
-  /*
-  for(let i=0; i<5; i++)
-  {
-    if(Icon[i] == "苦瓜")
-    {
-      image(Kugua_BW, AwardsX[i]-FixVal*0.05, AwardsY[i]-FixVal*0.05, FixVal*0.1, FixVal*0.1);
-    }
-    else if(Icon[i] == "鵝叔")
-    {
-      image(UnclePenguin, AwardsX[i]-FixVal*0.05, AwardsY[i]-FixVal*0.05, FixVal*0.1, FixVal*0.1);
-    }
-    else
-    {
-      image(Kugua_Gold, AwardsX[i]-FixVal*0.05, AwardsY[i]-FixVal*0.05, FixVal*0.1, FixVal*0.1);
-    }
-    textAlign(CENTER, CENTER); textStyle(BOLD); textSize(FixVal*0.04); fill(0); noStroke(); text(Money[i], AwardsX[i], AwardsY[i]+FixVal*0.07);
-  }*/
 
   if(windowHeight/windowWidth > 4/3)
   {
@@ -159,7 +133,7 @@ function draw()
     noFill(); strokeWeight(12); stroke(250, 185, 95);
     ellipse(CircleCenterX, CircleCenterY, FixVal*0.76, FixVal*0.76);
   }
-  textAlign(CENTER, CENTER); textStyle(BOLD); textSize(FixVal*0.04); fill(255); noStroke(); text("30W", width/2, height-50);
+  //textAlign(CENTER, CENTER); textStyle(BOLD); textSize(FixVal*0.04); fill(255); noStroke(); text("30W", width/2, height-50);
 }
   
 
