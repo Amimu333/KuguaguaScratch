@@ -1,4 +1,4 @@
-let MyCanvas1, MyCanvas2;
+let MyCanvas1, MyCanvas2, scratchBg;
 let ScratchCard, ScratchOffLayer, Kugua_BW, Kugua_Gold, UnclePenguin;
 let AwardsX = [];
 let AwardsY = [];
@@ -19,8 +19,9 @@ function preload()
 function setup() 
 {
   MyCanvas1 = createCanvas(windowWidth, windowHeight);
+  scratchBg = createGraphics(width, height);
 
-  frameRate(10);
+  frameRate(30);
 
   background(245, 86, 80);
   if(windowHeight/windowWidth > 4/3)
@@ -28,6 +29,9 @@ function setup()
     FixVal = width*4/3;
     MyCanvas2 = createGraphics(width, width*4/3);
     MyCanvas2.image(ScratchOffLayer, 0, 0, width, width*4/3);
+
+    scratchBg.image(ScratchCard, 0, height/2-(width*4/3/2), width, width*4/3);
+
     CircleCenterX = width/2;
     CircleCenterY = height/2+width*0.125;
   }
@@ -36,6 +40,9 @@ function setup()
     FixVal = height*3/4;
     MyCanvas2 = createGraphics(height*3/4, height);
     MyCanvas2.image(ScratchOffLayer, 0, 0, height*3/4, height);
+
+    scratchBg.image(ScratchCard, width/2-(height*3/4/2), 0, height*3/4, height);
+
     CircleCenterX = width/2;
     CircleCenterY = height*0.3888+FixVal*0.5388/2;
   }
@@ -72,30 +79,48 @@ function setup()
       Money[i] = "噗幣";
       Icon[i] = "金苦瓜";
     }
+
+    if(Icon[i] == "苦瓜")
+    {
+      scratchBg.image(Kugua_BW, AwardsX[i]-FixVal*0.05, AwardsY[i]-FixVal*0.05, FixVal*0.1, FixVal*0.1);
+    }
+    else if(Icon[i] == "鵝叔")
+    {
+      scratchBg.image(UnclePenguin, AwardsX[i]-FixVal*0.05, AwardsY[i]-FixVal*0.05, FixVal*0.1, FixVal*0.1);
+    }
+    else
+    {
+      scratchBg.image(Kugua_Gold, AwardsX[i]-FixVal*0.05, AwardsY[i]-FixVal*0.05, FixVal*0.1, FixVal*0.1);
+    }
+    scratchBg.textAlign(CENTER, CENTER); scratchBg.textStyle(BOLD); scratchBg.textSize(FixVal*0.04); scratchBg.fill(0); scratchBg.noStroke(); scratchBg.text(Money[i], AwardsX[i], AwardsY[i]+FixVal*0.07);
   }
 }
 
 function draw() 
 {
-  if(mouseIsPressed)
+  let isErasing = false;
+  if (mouseIsPressed || touches.length > 0)
   {
     MyCanvas2.erase();
     MyCanvas2.strokeWeight(100);
-    MyCanvas2.line(mouseX-getCanvasX(), mouseY-getCanvasY(), pmouseX-getCanvasX(), pmouseY-getCanvasY());
-    MyCanvas2.noErase();
-  }
+    isErasing = true;
 
-  if (touches.length > 0) 
-  {
-    MyCanvas2.erase();
-    MyCanvas2.strokeWeight(100);
-    for (let i = 0; i < touches.length; i++) 
+    if(mouseIsPressed)
     {
-      MyCanvas2.line(touches[i].x-getCanvasX(), touches[i].y-getCanvasY(), pmouseX-getCanvasX(), pmouseY-getCanvasY());
+      MyCanvas2.line(mouseX-getCanvasX(), mouseY-getCanvasY(), pmouseX-getCanvasX(), pmouseY-getCanvasY());
     }
-    MyCanvas2.noErase();
+    if(touches.length > 0) 
+    {
+      for (let i = 0; i < touches.length; i++) 
+      {
+        MyCanvas2.line(touches[i].x-getCanvasX(), touches[i].y-getCanvasY(), pmouseX-getCanvasX(), pmouseY-getCanvasY());
+      }
+    }
   }
+  if (isErasing) { MyCanvas2.noErase(); }
 
+  image(scratchBg, 0, 0);
+  /*
   if(windowHeight/windowWidth > 4/3)
   {
     image(ScratchCard, 0, height/2-(width*4/3/2), width, width*4/3);
@@ -103,8 +128,8 @@ function draw()
   else
   {
     image(ScratchCard, width/2-(height*3/4/2), 0, height*3/4, height);
-  }
-
+  }*/
+  /*
   for(let i=0; i<5; i++)
   {
     if(Icon[i] == "苦瓜")
@@ -120,7 +145,7 @@ function draw()
       image(Kugua_Gold, AwardsX[i]-FixVal*0.05, AwardsY[i]-FixVal*0.05, FixVal*0.1, FixVal*0.1);
     }
     textAlign(CENTER, CENTER); textStyle(BOLD); textSize(FixVal*0.04); fill(0); noStroke(); text(Money[i], AwardsX[i], AwardsY[i]+FixVal*0.07);
-  }
+  }*/
 
   if(windowHeight/windowWidth > 4/3)
   {
@@ -134,7 +159,7 @@ function draw()
     noFill(); strokeWeight(12); stroke(250, 185, 95);
     ellipse(CircleCenterX, CircleCenterY, FixVal*0.76, FixVal*0.76);
   }
-  textAlign(CENTER, CENTER); textStyle(BOLD); textSize(FixVal*0.04); fill(255); noStroke(); text("10-2", width/2, height-50);
+  textAlign(CENTER, CENTER); textStyle(BOLD); textSize(FixVal*0.04); fill(255); noStroke(); text("30", width/2, height-50);
 }
   
 
