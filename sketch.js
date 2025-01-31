@@ -20,7 +20,7 @@ function setup()
 {
   MyCanvas1 = createCanvas(windowWidth, windowHeight);
 
-  frameRate(20);
+  frameRate(10);
 
   background(245, 86, 80);
   if(windowHeight/windowWidth > 4/3)
@@ -134,7 +134,7 @@ function draw()
     noFill(); strokeWeight(12); stroke(250, 185, 95);
     ellipse(CircleCenterX, CircleCenterY, FixVal*0.76, FixVal*0.76);
   }
-  textAlign(CENTER, CENTER); textStyle(BOLD); textSize(FixVal*0.04); fill(255); noStroke(); text("20", width/2, height-50);
+  textAlign(CENTER, CENTER); textStyle(BOLD); textSize(FixVal*0.04); fill(255); noStroke(); text("10", width/2, height-50);
 }
   
 
