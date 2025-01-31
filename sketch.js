@@ -119,20 +119,23 @@ function draw()
     {
       image(Kugua_Gold, AwardsX[i]-FixVal*0.05, AwardsY[i]-FixVal*0.05, FixVal*0.1, FixVal*0.1);
     }
-    textAlign(CENTER, CENTER); textStyle(BOLD); textSize(FixVal*0.04); text(Money[i], AwardsX[i], AwardsY[i]+FixVal*0.07);
+    textAlign(CENTER, CENTER); textStyle(BOLD); textSize(FixVal*0.04); fill(0); noStroke(); text(Money[i], AwardsX[i], AwardsY[i]+FixVal*0.07);
   }
 
   if(windowHeight/windowWidth > 4/3)
   {
     image(MyCanvas2, 0, height/2-(width*4/3/2), width, width*4/3);
+    noFill(); strokeWeight(12); stroke(250, 185, 95);
+    ellipse(CircleCenterX, CircleCenterY, width*0.76, width*0.76);
   }
   else
   {
     image(MyCanvas2, width/2-(height*3/4/2), 0, height*3/4, height);
+    noFill(); strokeWeight(12); stroke(250, 185, 95);
+    ellipse(CircleCenterX, CircleCenterY, FixVal*0.76, FixVal*0.76);
   }
-
-  
 }
+  
 
 function getCanvasX() 
 {
