@@ -20,6 +20,8 @@ function setup()
 {
   MyCanvas1 = createCanvas(windowWidth, windowHeight);
 
+  frameRate(20);
+
   background(245, 86, 80);
   if(windowHeight/windowWidth > 4/3)
   {
@@ -37,8 +39,6 @@ function setup()
     CircleCenterX = width/2;
     CircleCenterY = height*0.3888+FixVal*0.5388/2;
   }
-
-  
 
   for(let i=0; i<5; i++)
   {
