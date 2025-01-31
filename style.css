@@ -2,8 +2,19 @@ html, body
 {
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  user-select: none;
+  background-color: rgb(245, 86, 80);
 }
 canvas 
 {
   display: block;
+}
+#loading
+{
+  top: 47.5%; left: 50%; transform: translate(-50%, -50%);
+  font-size: 6vw; font-family: Microsoft JhengHei; font-weight: bold; color: rgb(250, 185, 95);
+  text-align: center;
+  position: fixed;
+  z-index: -1;
 }
